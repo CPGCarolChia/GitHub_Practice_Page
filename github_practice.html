@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My First GitHub Practice Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f1f5fb; margin: 0; min-height: 100vh; display: grid; place-items: center; }
+    .card { background: white; max-width: 420px; margin: 24px; padding: 36px; border-radius: 18px; text-align: center; box-shadow: 0 8px 24px #1b31551c; }
+    h1 { color: #234476; }
+    p { line-height: 1.6; color: #44546b; }
+    button { background: #316bc5; color: white; border: none; border-radius: 9px; padding: 13px 22px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #204f9a; }
+    #message { font-weight: bold; color: #196a46; min-height: 26px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Hello, GitHub! &#128075;</h1>
+    <p>This is my very first practice webpage.</p>
+    <p>I am learning how to save code and work with GitHub. One small step at a time!</p>
+    <button id="helloButton" type="button">Click me!</button>
+    <p id="message" aria-live="polite"></p>
+  </main>
+  <script>
+    document.getElementById('helloButton').addEventListener('click', function () {
+      document.getElementById('message').textContent = 'Yay! My first button works!';
+    });
+  </script>
+</body>
+</html>
