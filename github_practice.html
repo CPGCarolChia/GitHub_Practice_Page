@@ -3,28 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My First GitHub Practice Page</title>
+  <title>Pip's Little Patch of Blue</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f1f5fb; margin: 0; min-height: 100vh; display: grid; place-items: center; }
-    .card { background: white; max-width: 420px; margin: 24px; padding: 36px; border-radius: 18px; text-align: center; box-shadow: 0 8px 24px #1b31551c; }
-    h1 { color: #234476; }
-    p { line-height: 1.6; color: #44546b; }
-    button { background: #316bc5; color: white; border: none; border-radius: 9px; padding: 13px 22px; cursor: pointer; font-size: 16px; }
-    button:hover { background: #204f9a; }
-    #message { font-weight: bold; color: #196a46; min-height: 26px; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #234861;
+      background: radial-gradient(circle at 15% 15%, #ffffffb3, transparent 35%),
+                  linear-gradient(145deg, #dff5ff, #bfe6ff);
+    }
+    .card {
+      width: 100%;
+      max-width: 690px;
+      padding: clamp(24px, 6vw, 52px);
+      border: 2px solid white;
+      border-radius: 30px;
+      text-align: center;
+      background: #f8fcff;
+      box-shadow: 0 18px 50px #2b729a20;
+    }
+    .sky { font-size: 52px; margin-bottom: 20px; }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #45677d;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(30px, 6vw, 44px); line-height: 1.15; }
+    .intro { max-width: 460px; margin: 20px auto 28px; line-height: 1.7; }
+    .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    button {
+      flex: 1 1 150px;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 16px 12px;
+      color: #243e50;
+      font: bold 16px "Trebuchet MS", Arial, sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #2348611c;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    #aboutButton { background: #ffb9d1; }
+    #hobbiesButton { background: #a5e9cf; }
+    #surpriseButton { background: #ffe38d; }
+    button:hover { transform: translateY(-3px); box-shadow: 0 7px 0 #2348611c; }
+    button:active { transform: translateY(1px); box-shadow: none; }
+    button:focus-visible { outline: 3px solid #245e94; outline-offset: 4px; }
+    .message-box {
+      margin-top: 28px;
+      padding: 22px;
+      border: 2px dashed #a4d6f0;
+      border-radius: 18px;
+      background: #eaf7ff;
+    }
+    #message { margin: 0; min-height: 78px; display: grid; place-items: center; line-height: 1.65; }
+    .footnote { margin: 24px 0 0; color: #496b80; font-size: 12px; line-height: 1.6; }
+    @media (prefers-reduced-motion: reduce) {
+      button { transition: none; }
+      button:hover, button:active { transform: none; }
+    }
   </style>
 </head>
 <body>
   <main class="card">
-    <h1>Hello, GitHub! &#128075;</h1>
-    <p>This is my very first practice webpage.</p>
-    <p>I am learning how to save code and work with GitHub. One small step at a time!</p>
-    <button id="helloButton" type="button">Click me!</button>
-    <p id="message" aria-live="polite"></p>
+    <div class="sky" aria-hidden="true">☁️ ☀️ ☁️</div>
+    <p class="eyebrow">A little curiosity. A lot of sunshine.</p>
+    <h1>Pip's little patch of blue.</h1>
+    <p class="intro">Welcome to the sunny side of make-believe! Meet Pip Cloudberry, a tiny explorer with a very big imagination.</p>
+    <div class="buttons" role="group" aria-label="Discover Pip's world">
+      <button id="aboutButton" type="button" aria-controls="message">About Me</button>
+      <button id="hobbiesButton" type="button" aria-controls="message">My Hobbies</button>
+      <button id="surpriseButton" type="button" aria-controls="message">Surprise Me</button>
+    </div>
+    <div class="message-box">
+      <p id="message" role="status" aria-live="polite" aria-atomic="true">A small adventure is one click away.<br>Pick a button and see what pops up!</p>
+    </div>
+    <p class="footnote">An entirely fictional little world, made for a little fun.</p>
   </main>
   <script>
-    document.getElementById('helloButton').addEventListener('click', function () {
-      document.getElementById('message').textContent = 'Yay! My first button works!';
+    const messages = {
+      aboutButton: "Hi, I'm Pip Cloudberry! I deliver sunshine by hot-air balloon, and my co-pilot is a marshmallow named Mallow. ☀️",
+      hobbiesButton: "My hobbies? Painting rainbows, teaching teacups to tap-dance, and collecting giggles in jam jars! 🌈",
+      surpriseButton: "Surprise! A penguin in roller skates just crowned you the honorary Mayor of Marshmallow Mountain! 🐧"
+    };
+
+    Object.entries(messages).forEach(function ([buttonId, message]) {
+      document.getElementById(buttonId).addEventListener('click', function () {
+        document.getElementById('message').textContent = message;
+      });
     });
   </script>
 </body>
